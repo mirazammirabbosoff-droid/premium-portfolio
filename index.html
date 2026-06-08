@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Azam.Dev | Premium Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Azam.Dev</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -257,14 +255,14 @@
             }
         });
 
-        // АСИНХРОННАЯ ОТПРАВКА ДАННЫХ НА FASTAPI СЕРВЕР
+        // АСИНХРОННАЯ ОТПРАВКА ДАННЫХ НА FASTAPI СЕРВЕР В ОБЛАКЕ RENDER
         document.getElementById('tg-form').addEventListener('submit', async function(e) {
             e.preventDefault(); // Запрещаем перезагрузку страницы
 
             const formData = new FormData(this);
 
             try {
-                const response = await fetch('http://127.0.0.1:8000/send-message', {
+                const response = await fetch('https://azam-portfolio-backend.onrender.com/send-message', {
                     method: 'POST',
                     body: formData
                 });
@@ -279,7 +277,7 @@
                 }
             } catch (error) {
                 console.error('Ошибка отправки:', error);
-                alert('Не удалось связаться с бэкендом. Убедись, что python server.py запущен в терминале!');
+                alert('Не удалось связаться с бэкендом на Render.');
             }
         });
     </script>
